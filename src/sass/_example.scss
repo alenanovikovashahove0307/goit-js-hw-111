@@ -26,3 +26,37 @@
   background-size: cover;
   background-position: center;
 }
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.photo-card {
+  width: 300px;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.photo-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.info {
+  margin-top: 10px;
+}
+
+.info-item {
+  margin: 5px 0;
+}
+
+.load-more {
+  display: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
