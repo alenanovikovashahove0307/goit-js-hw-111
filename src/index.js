@@ -5,6 +5,7 @@ const form = document.getElementById('search-form');
 const gallery = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
 
+const searchInput = form.elements.searchQuery;
 let currentPage = 1;
 let currentSearchQuery = '';
 
@@ -42,6 +43,7 @@ async function handleFormSubmit(event) {
     hideLoadMoreButton();
   } finally {
     hideLoader();
+    searchInput.value = '';
   }
 }
 
@@ -64,6 +66,7 @@ async function loadMoreImages() {
     console.error(error);
   } finally {
     hideLoader();
+    
   }
 }
 
