@@ -1,7 +1,6 @@
 import Notiflix from 'notiflix';
 import axios from 'axios';
 // script.js
-
 const form = document.getElementById('search-form');
 const gallery = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
@@ -14,8 +13,9 @@ loadMoreBtn.addEventListener('click', loadMoreImages);
 
 async function handleFormSubmit(event) {
   event.preventDefault();
-  const searchQuery = event.target.elements.searchQuery.value;
+  const searchQuery = event.target.elements.searchQuery.value.trim();
   if (searchQuery === '') {
+    Notiflix.Notify.info('Please enter a valid search query.');
     return;
   }
 
@@ -39,6 +39,7 @@ async function handleFormSubmit(event) {
   } catch (error) {
     showErrorNotification();
     console.error(error);
+    hideLoadMoreButton();
   } finally {
     hideLoader();
   }
@@ -131,11 +132,15 @@ function hideLoader() {
 }
 
 function showNoResultsMessage() {
-  Notiflix.Notify.info('Sorry, there are no images matching your search query. Please try again.');
+  Notiflix.Notify.info(
+    'Sorry, there are no images matching your search query. Please try again.'
+  );
 }
 
 function showErrorNotification() {
-  Notiflix.Notify.failure('An error occurred while fetching images. Please try again later.');
+  Notiflix.Notify.failure(
+    'An error occurred while fetching images. Please try again later.'
+  );
 }
 
 function showLoadMoreButton() {
